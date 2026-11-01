@@ -21,5 +21,8 @@ if(!items.length) throw new Error('Aucun produit reconnu dans '+source);
 for(const item of items) catalog.set(item.url,item);
 console.log(`${items.length} articles lus dans ${require('node:path').basename(source)}`);
 }
+// Articles retirés de la vitrine à la demande du propriétaire.
+const excludedIds = new Set(['16486911','16486836']);
+for (const [url] of catalog) if (excludedIds.has(new URL(url).pathname.split('/').pop())) catalog.delete(url);
 fs.writeFileSync('products.json',JSON.stringify([...catalog.values()],null,2)+'\n');
 console.log(`${catalog.size} articles uniques au total`);
