@@ -57,3 +57,10 @@ body>header,body>main,body>footer,.announcement{position:relative;z-index:1}
 .hero-copy{position:relative}.hero .intro{color:#c3c7b9}.hero h1{text-shadow:0 3px 24px #10130d}.hero .scene-grid{opacity:.7}
 .catalog-tools,.results-line{background:#151712f2}.product{background:#181a16f5}.faq-list{background:#101110d9;padding:0 20px}.closing{background-color:#101110d9}footer{background:#101110ed}
 @media(max-width:700px){.visual-backdrop{opacity:.4}.hero-ribbons{background-size:auto 100%;opacity:.8}.faq-list{padding-inline:12px}}
+/* Version légère : deux courbes lentes, sans couches géométriques supplémentaires. */
+body::after{display:none}
+body::before{opacity:.4}
+.visual-backdrop{background-image:url('assets/ambient.svg?v=light-1');opacity:.38}
+.hero-ribbons{background-image:url('assets/ambient.svg?v=light-1');opacity:.65}
+.hero .scene-grid{opacity:.35;animation:none;will-change:auto}
+@media(max-width:700px){.visual-backdrop{opacity:.3}.hero-ribbons{opacity:.55}}
