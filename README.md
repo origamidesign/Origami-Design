@@ -4,7 +4,11 @@ Vitrine française pour les créations Second Life de Manege et Denzel. HTML, CS
 
 ## Publication
 
-Le workflow `.github/workflows/pages.yml` publie la branche `main` sur GitHub Pages. Dans les paramètres du dépôt, sélectionner **Pages → Source → GitHub Actions** si nécessaire. L'adresse attendue est https://origamidesign.github.io/Origami-Design/ après une publication réussie.
+La publication directe fonctionne avec **Pages → Source → Deploy from a branch → main → / (root)**. Dans GitHub Desktop, enregistrer les changements puis cliquer sur **Push origin**. L'adresse attendue est https://origamidesign.github.io/Origami-Design/ après une publication réussie. Un workflow alternatif est fourni pour une configuration GitHub Actions ; il n'est pas nécessaire pour la publication directe depuis la branche.
+
+## Direction visuelle
+
+La feuille `atelier.css` complète `style.css` : ambiance sombre, accents dorés, origami animé en CSS et grille en perspective. Le mouvement est désactivé lorsque la préférence système de réduction des animations est active. Aucun moteur 3D ni dépendance supplémentaire n'est nécessaire.
 
 ## Catalogue
 
