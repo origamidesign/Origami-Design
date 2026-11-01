@@ -1,0 +1,19 @@
+# Origami Design
+
+Vitrine française pour les créations Second Life de Manege et Denzel. HTML, CSS et JavaScript, sans installation de dépendances.
+
+## Publication
+
+Le workflow `.github/workflows/pages.yml` publie la branche `main` sur GitHub Pages. Dans les paramètres du dépôt, sélectionner **Pages → Source → GitHub Actions** si nécessaire. L'adresse attendue est https://origamidesign.github.io/Origami-Design/ après une publication réussie.
+
+## Catalogue
+
+Les 28 articles de `products.json` ont été importés depuis la page publique de la boutique le 1 novembre 2026. Les prix et disponibilités ne sont pas synchronisés automatiquement ; la fiche Marketplace fait référence. Modifier ce fichier pour ajouter des articles ou corriger leurs catégories. Chaque entrée contient `name`, `price`, `category`, `url` et `image`.
+
+Les images sont celles de la boutique, hébergées sur le CDN Second Life. Les polices Google Fonts disposent de polices de repli. L'adresse de la boutique en monde provient du profil Marketplace et reste à vérifier dans Second Life.
+
+Pour réimporter le catalogue : enregistrer le HTML de la boutique sous `marketplace-source.html`, puis lancer `node prepare-catalog.cjs` (écrase le catalogue et ses catégories).
+
+## Aperçu local
+
+Servir ce dossier avec un serveur HTTP statique, par exemple `python -m http.server 8000`, puis ouvrir http://localhost:8000. L'ouverture directe en `file://` ne permet pas le chargement du catalogue JSON.
