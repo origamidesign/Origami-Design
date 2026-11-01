@@ -9,13 +9,13 @@ const html = fs.readFileSync(source, 'utf8');
 const items = [...html.matchAll(/<div class="column gallery-item[\s\S]*?(?=<div class="column gallery-item|<div class="pagination|$)/g)].map(m => {
  const block=m[0];
  const link=block.match(/class="product-image" href="([^"]+)"/);
- const image=block.match(/https:\/\/slm-assets\.secondlife\.com\/assets\/[^\s"'<>]+/);
+ const image=block.match(/https:\/\/slm-assets\.secondlife\.com\/assets\/(?:\\.|[^\s"'<>\\])+/);
  const name=block.match(/'name': '([^\n]*)',/);
  const price=block.match(/'price': '(\d+)'/);
  if(!link||!image||!name||!price) return null;
  const title=decode(name[1]);
  const category=/Arcade/i.test(title)?'Arcade':/Avatar|Minotaur/i.test(title)?'Avatars':/Outfit|Dress|Necklace|harness/i.test(title)?'Mode':/Santa|Gateau|Rez Day/i.test(title)?'Fêtes':'Décoration';
- return {name:title,price:Number(price[1]),category,url:new URL(decode(link[1]),'https://marketplace.secondlife.com').href,image:decode(image[0]).replace('/view_small/','/view_large/')};
+ return {name:title,price:Number(price[1]),category,url:new URL(decode(link[1]),'https://marketplace.secondlife.com').href,image:decode(image[0]).replace(/\\'/g,'%27').replace(/'/g,'%27').replace('/view_small/','/view_large/')};
 }).filter(Boolean);
 if(!items.length) throw new Error('Aucun produit reconnu dans '+source);
 for(const item of items) catalog.set(item.url,item);

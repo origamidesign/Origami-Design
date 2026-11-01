@@ -11,7 +11,7 @@ function render(){
  if(sort==='name')items.sort((a,b)=>a.name.localeCompare(b.name,'fr'));
  grid.replaceChildren(...items.map(p=>{
   const card=document.createElement('a');card.className='product';card.href=p.url;card.target='_blank';card.rel='noopener noreferrer';
-  const picture=document.createElement('div');picture.className='product-picture';
+  const picture=document.createElement('div');picture.className=p.category==='Arcade'?'product-picture arcade-picture':'product-picture';
   const img=document.createElement('img');img.src=p.image;img.alt=p.name;img.loading='lazy';img.width=500;img.height=500;
   img.addEventListener('error',()=>{img.hidden=true;picture.classList.add('unavailable');picture.textContent='Visuel disponible sur Marketplace ↗';});
   const arrow=document.createElement('span');arrow.className='product-arrow';arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');picture.append(img,arrow);
@@ -27,4 +27,4 @@ document.querySelector('#search').addEventListener('input',render);
 document.querySelector('#sort').addEventListener('change',render);
 document.querySelectorAll('[data-universe]').forEach(link=>link.addEventListener('click',()=>document.querySelector(`[data-category="${link.dataset.universe}"]`).click()));
 document.querySelector('#year').textContent=new Date().getFullYear();
-fetch('products.json?v=catalogue-129-2', {cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalogue');return r.json();}).then(data=>{products=data;const hero=products.find(p=>/Hands Planter Shelf/i.test(p.name))||products[0];if(hero){document.querySelector('#hero-image').src=hero.image;document.querySelector('#hero-image').alt=hero.name;document.querySelector('#hero-name').textContent=hero.name.replace(/~Origami Design~/gi,'');document.querySelector('#hero-product').href=hero.url;}render();}).catch(()=>{document.querySelector('#result-count').textContent='Le catalogue est momentanément indisponible. Retrouvez toutes nos créations sur Marketplace.';});
+fetch('products.json?v=catalogue-129-3', {cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('catalogue');return r.json();}).then(data=>{products=data;const hero=products.find(p=>/Hands Planter Shelf/i.test(p.name))||products[0];if(hero){document.querySelector('#hero-image').src=hero.image;document.querySelector('#hero-image').alt=hero.name;document.querySelector('#hero-name').textContent=hero.name.replace(/~Origami Design~/gi,'');document.querySelector('#hero-product').href=hero.url;}render();}).catch(()=>{document.querySelector('#result-count').textContent='Le catalogue est momentanément indisponible. Retrouvez toutes nos créations sur Marketplace.';});
