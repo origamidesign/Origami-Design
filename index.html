@@ -6,7 +6,7 @@
   <meta name="description" content="Découvrez les créations Origami Design par Manege et Denzel : décoration, avatars et mode pour Second Life. Retrouvez chaque article sur Marketplace.">
   <meta name="theme-color" content="#f4f1ea">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="atelier.css?v=six-languages-1"><script src="languages.js?v=six-languages-1" defer></script><script src="i18n.js?v=six-languages-1" defer></script><script src="app.js?v=latest-product-1" defer></script>
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="atelier.css?v=product-dialog-1"><script src="languages.js?v=six-languages-1" defer></script><script src="i18n.js?v=six-languages-1" defer></script><script src="app.js?v=product-dialog-1" defer></script>
 </head>
 <body>
   <div class="visual-backdrop" aria-hidden="true"></div>
@@ -64,6 +64,10 @@
     <section class="faq wrap" id="questions"><div><p class="eyebrow">AVANT DE VOUS LANCER</p><h2>Quelques repères.</h2></div><div class="faq-list"><details><summary>Comment acheter une création ? <span>+</span></summary><p>Cliquez sur une création pour ouvrir sa fiche sur Second Life Marketplace. Connectez-vous à votre compte Second Life pour vérifier les détails et finaliser votre achat.</p></details><details><summary>Ces objets sont-ils physiques ? <span>+</span></summary><p>Les articles sont des créations virtuelles destinées à Second Life. Aucun objet physique n’est expédié.</p></details><details><summary>Où trouver les permissions et compatibilités ? <span>+</span></summary><p>Consultez la fiche Marketplace de chaque article avant l’achat : elle précise sa description, ses permissions et les éventuelles conditions d’utilisation ou de compatibilité.</p></details><details><summary>Comment contacter le studio ? <span>+</span></summary><p>Retrouvez le profil vendeur de Denzel7 depuis notre boutique Marketplace pour nous contacter dans Second Life. Pour une demande concernant un achat, indiquez le nom de l’article et les informations de la transaction.</p></details></div></section>
     <section class="closing wrap"><p class="eyebrow">VOTRE PROCHAINE TROUVAILLE VOUS ATTEND</p><h2>Faites place à l’inattendu.</h2><a class="button" href="https://marketplace.secondlife.com/stores/99143" target="_blank" rel="noopener noreferrer">Entrer dans la boutique <span>↗</span></a></section>
   </main>
+  <dialog class="product-dialog" id="product-dialog" aria-labelledby="detail-title" aria-describedby="detail-note">
+    <button type="button" class="detail-close" id="detail-close" aria-label="Fermer">×</button>
+    <div class="detail-layout"><div class="detail-visual"><img id="detail-image" alt=""><p id="detail-image-fallback" hidden></p></div><div class="detail-copy"><p class="eyebrow" id="detail-category"></p><h2 id="detail-title"></h2><p class="detail-price" id="detail-price"></p><p class="detail-note" id="detail-note">Les achats se font directement sur Second Life Marketplace.</p><p class="detail-note">Prix indicatifs en L$ ; la fiche Marketplace fait référence.</p><a class="button" id="detail-marketplace" target="_blank" rel="noopener noreferrer">Voir sur Marketplace ↗</a></div></div>
+  </dialog>
   <footer class="wrap"><a class="brand footer-logo" href="#" aria-label="Origami Design, accueil"><img src="assets/origami-design-logo.png" alt="Origami Design" width="240" height="88" loading="lazy"></a><p>© <span id="year">2026</span> Origami Design · Manege & Denzel</p><a href="https://marketplace.secondlife.com/stores/99143" target="_blank" rel="noopener noreferrer">Second Life Marketplace ↗</a><small>Site indépendant, non affilié à Linden Lab.</small></footer>
 </body>
 </html>
