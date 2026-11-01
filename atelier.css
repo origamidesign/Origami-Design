@@ -36,3 +36,17 @@ footer .footer-logo img{display:block;width:100%;height:auto;filter:none}
 /* Avis clients authentiques */
 .customer-reviews{padding-block:75px 10px}.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.review-card{background:linear-gradient(145deg,#20231b,#151712);border:1px solid var(--line);padding:30px;display:flex;flex-direction:column}.review-stars{color:#d8bd80;letter-spacing:5px;font-size:19px;margin-bottom:22px}.review-card h3{font:500 19px Manrope,sans-serif;margin-bottom:15px}.review-card blockquote{margin:0 0 28px;color:#c5c6bb;font-size:14px;line-height:1.9;flex:1}.review-signature{display:flex;flex-direction:column;gap:7px;font-size:11px}.review-signature strong{font-weight:500}.review-signature time{font-size:10px;color:var(--muted)}.review-card>a{margin-top:22px;border-top:1px solid var(--line);padding-top:18px;font-size:10px;color:#aaa99c;line-height:1.8}.review-card>a span{display:block;color:var(--orange);margin-top:7px}.review-card>a:hover{color:var(--ink)}
 @media(max-width:900px){.review-grid{grid-template-columns:1fr}.review-card{padding:25px}.customer-reviews{padding-top:45px}.review-card blockquote{margin-bottom:20px}}
+/* Atmosphère animée : lumière diffuse et lignes d'atelier. */
+body{isolation:isolate;position:relative}
+body::before,body::after{content:'';position:fixed;pointer-events:none;z-index:-1;inset:-15%;}
+body::before{background:radial-gradient(ellipse at 18% 24%,#b6995530 0,transparent 38%),radial-gradient(ellipse at 83% 68%,#7c956d24 0,transparent 37%),radial-gradient(ellipse at 50% 90%,#b9a37116 0,transparent 32%);animation:ambient-drift 28s ease-in-out infinite alternate;will-change:transform}
+body::after{background-image:linear-gradient(115deg,transparent 49.85%,#d1b77d0c 50%,transparent 50.15%),linear-gradient(65deg,transparent 49.85%,#d1b77d08 50%,transparent 50.15%);background-size:220px 320px;mask-image:linear-gradient(transparent,#0009 25%,#0009 75%,transparent);animation:ambient-lines 42s linear infinite;will-change:transform}
+.hero .scene-grid{animation:studio-grid-drift 30s ease-in-out infinite alternate;will-change:transform}
+.hero .scene-glow{animation:studio-light 12s ease-in-out infinite alternate}
+.catalog,.customer-reviews,.faq{position:relative}
+@keyframes ambient-drift{from{transform:translate(-2%,-2%) rotate(-3deg) scale(1)}to{transform:translate(3%,4%) rotate(4deg) scale(1.08)}}
+@keyframes ambient-lines{from{transform:translateY(0)}to{transform:translateY(-320px)}}
+@keyframes studio-grid-drift{from{transform:perspective(700px) rotateX(63deg) rotateZ(-22deg) translateY(-18px)}to{transform:perspective(700px) rotateX(61deg) rotateZ(-18deg) translateY(18px)}}
+@keyframes studio-light{from{opacity:.55}to{opacity:1}}
+@media(max-width:700px){body::after{display:none}body::before{animation-duration:36s}.hero .scene-grid{animation:none;will-change:auto}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,.hero .scene-grid,.hero .scene-glow{animation:none;will-change:auto}}
