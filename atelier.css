@@ -4,3 +4,17 @@ body{background:var(--paper)}.announcement{background:#cfb27b;color:#191a17;font
 @media(min-width:1600px){.hero{min-height:930px}.paper-scene{top:70px;transform:translateX(-50%) scale(1.15)}.hero-copy{padding-top:450px}}
 @media(max-width:700px){.header{padding:18px 5%}.brand>span{font-size:16px}.store-link{padding:10px;font-size:10px}.store-link span{margin-left:6px}.hero{min-height:780px;padding:30px 5% 25px}.paper-scene{top:60px;width:330px;height:270px}.paper-shadow{left:80px;width:170px}.hero-copy{padding-top:340px}.hero h1{font-size:48px;margin-block:21px}.intro{font-size:12px}.hero .eyebrow{font-size:8px}.hero-buttons{gap:9px;flex-wrap:wrap}.button{font-size:9px;padding:14px 16px;gap:20px}.hero-bottom{margin-top:40px;font-size:7px}.hero-bottom>span:last-child{display:none}.viewport-note{font-size:7px;top:14px}.scene-coordinate{top:20px}.spotlight{gap:10px}.spotlight-tag{font-size:7px;padding:6px}.spotlight>a{font-size:9px;gap:9px}.spotlight-action{font-size:0}.spotlight-action::after{content:'↗';font-size:18px}.collection-intro{grid-template-columns:1fr;padding-block:35px;gap:12px}.collection-intro>a{padding:24px;min-height:0;display:grid;grid-template-columns:1fr auto;gap:0 12px}.collection-intro h2{margin:15px 0 8px;font-size:25px}.collection-intro p{grid-column:1;margin-bottom:0}.collection-intro b{grid-column:2;grid-row:1/4;align-self:center;margin-top:0;font-size:8px}.product-grid{gap:16px 10px}.product{padding:6px 6px 13px}.product h3{font-size:11px;min-height:50px}.catalog-tools{padding:10px}.product-meta{font-size:8px}.studio-mark{font-size:110px}.closing .eyebrow{font-size:8px}.search input{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.paper-object{animation:none}.collection-intro>a:hover,.product:hover{transform:none}}
+/* Identité officielle et grue de papier blanc */
+.header .brand-official{width:280px;height:78px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.header .brand-official img{width:280px;height:103px;object-fit:contain;filter:none}
+.header{padding-top:12px;padding-bottom:12px}
+.crane-object{display:grid;place-items:center;animation:crane-float 8s ease-in-out infinite}
+.crane{display:block;width:112%;height:auto;overflow:visible;filter:drop-shadow(0 18px 18px #0005)}
+.crane-wing-back{transform-box:view-box;transform-origin:48% 65%;animation:wing-back 8s ease-in-out infinite}
+.crane-wing-front{transform-box:view-box;transform-origin:56% 68%;animation:wing-front 8s ease-in-out infinite}
+@keyframes crane-float{0%,100%{transform:rotateY(-9deg) rotateZ(-3deg) translateY(0)}50%{transform:rotateY(9deg) rotateZ(2deg) translateY(-15px)}}
+@keyframes wing-back{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(5deg)}}
+@keyframes wing-front{0%,100%{transform:rotate(1deg)}50%{transform:rotate(-4deg)}}
+@media(max-width:700px){.header .brand-official{width:190px;height:62px}.header .brand-official img{width:190px;height:70px}.header{gap:12px}.crane{width:105%}}
+@media(max-width:360px){.header .brand-official{width:160px}.header .brand-official img{width:160px}}
+@media(prefers-reduced-motion:reduce){.crane-object,.crane-wing-back,.crane-wing-front{animation:none}}
