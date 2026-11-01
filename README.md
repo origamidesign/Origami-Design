@@ -12,11 +12,11 @@ La feuille `atelier.css` complète `style.css` : ambiance sombre, accents dorés
 
 ## Catalogue
 
-Les 28 articles de `products.json` ont été importés depuis la page publique de la boutique le 1 novembre 2026. Les prix et disponibilités ne sont pas synchronisés automatiquement ; la fiche Marketplace fait référence. Modifier ce fichier pour ajouter des articles ou corriger leurs catégories. Chaque entrée contient `name`, `price`, `category`, `url` et `image`.
+Les 129 articles de `products.json` ont été importés depuis les deux pages HTML fournies par le propriétaire le 1 novembre 2026 (96 + 33 articles). Les prix et disponibilités ne sont pas synchronisés automatiquement ; la fiche Marketplace fait référence. Modifier ce fichier pour ajouter des articles ou corriger leurs catégories. Chaque entrée contient `name`, `price`, `category`, `url` et `image`.
 
 Les images sont celles de la boutique, hébergées sur le CDN Second Life. Les polices Google Fonts disposent de polices de repli. L'adresse de la boutique en monde provient du profil Marketplace et reste à vérifier dans Second Life.
 
-Pour réimporter le catalogue : enregistrer le HTML de la boutique sous `marketplace-source.html`, puis lancer `node prepare-catalog.cjs` (écrase le catalogue et ses catégories).
+Pour importer plusieurs pages HTML enregistrées depuis Marketplace : lancer `node prepare-catalog.cjs "page1.html" "page2.html"`. Le script fusionne les articles avec le catalogue existant, met à jour les articles présents dans les fichiers et évite les doublons par lien Marketplace. Sans argument, il lit `marketplace-source.html`. Les fichiers HTML sources restent locaux et ne doivent pas être publiés : ils peuvent contenir des informations de session.
 
 ## Aperçu local
 
