@@ -48,13 +48,17 @@ const english = {
  'Le catalogue est momentanément indisponible. Retrouvez toutes nos créations sur Marketplace.':'The catalogue is temporarily unavailable. Find all our creations on Marketplace.'
 };
 const languageKey='origami-language';
+const supported=['fr','en','de','es','pt','ja'];
+english.Arcade='Arcade';english.Avatars='Avatars';
+const translate=(text,lang)=>lang==='fr'?text:(lang==='en'?(english[text]||text):(window.origamiTranslations[lang]?.[english[text]||text]||english[text]||text));
 let savedLanguage;try{savedLanguage=localStorage.getItem(languageKey);}catch{}
-let language=['fr','en'].includes(savedLanguage)?savedLanguage:((navigator.languages?.[0]||navigator.language||'en').toLowerCase().startsWith('fr')?'fr':'en');
+const browserLanguages=(navigator.languages?.length?navigator.languages:[navigator.language||'en']).map(code=>code.toLowerCase().split('-')[0]);
+let language=supported.includes(savedLanguage)?savedLanguage:(browserLanguages.find(code=>supported.includes(code))||'en');
 const textEntries=[];
 const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 while(walker.nextNode()){
  const node=walker.currentNode;
- if(node.parentElement.closest('script,style,svg,blockquote,.review-card h3'))continue;
+ if(node.parentElement.closest('script,style,svg,blockquote,.review-card h3,.language-switch'))continue;
  const original=node.nodeValue, key=original.trim();
  if(Object.hasOwn(english,key))textEntries.push({node,original,key});
 }
@@ -62,16 +66,17 @@ const attributes=[];
 document.querySelectorAll('[aria-label],[placeholder]').forEach(node=>{
  for(const attr of ['aria-label','placeholder']){const original=node.getAttribute(attr);if(Object.hasOwn(english,original))attributes.push({node,attr,original});}
 });
-window.origamiI18n={get language(){return language;},t(text){return language==='en'?(english[text]||text):text;}};
+window.origamiI18n={get language(){return language;},t(text){return translate(text,language);},count(n){return ({fr:()=>`${n} création${n>1?'s':''} à découvrir`,en:()=>`${n} creation${n!==1?'s':''} to discover`,de:()=>`${n} Kreation${n!==1?'en':''} entdecken`,es:()=>`${n} ${n===1?'creación':'creaciones'} por descubrir`,pt:()=>`${n} criaç${n===1?'ão':'ões'} para descobrir`,ja:()=>`${n}点の作品`})[language]();}};
 function setLanguage(next){
  language=next;document.documentElement.lang=next;
- for(const {node,original,key} of textEntries)node.nodeValue=next==='en'?original.replace(key,english[key]):original;
- for(const {node,attr,original} of attributes)node.setAttribute(attr,next==='en'?english[original]:original);
- document.title=next==='fr'?'Origami Design — Créations pour Second Life':'Origami Design — Creations for Second Life';
+ for(const {node,original,key} of textEntries)node.nodeValue=original.replace(key,translate(key,next));
+ for(const {node,attr,original} of attributes)node.setAttribute(attr,translate(original,next));
+ document.title=({fr:'Origami Design — Créations pour Second Life',en:'Origami Design — Creations for Second Life',de:'Origami Design — Kreationen für Second Life',es:'Origami Design — Creaciones para Second Life',pt:'Origami Design — Criações para Second Life',ja:'Origami Design — Second Lifeの作品'})[next];
  document.querySelector('meta[name="description"]').content=next==='fr'?'Découvrez les créations Origami Design par Manege et Denzel : décoration, avatars et mode pour Second Life. Retrouvez chaque article sur Marketplace.':'Explore Origami Design creations by Manege and Denzel: decor, avatars and fashion for Second Life. Find each item on Marketplace.';
- document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===next)));
+ document.querySelector('#language-select').value=next;
+ if(next!=='fr'&&next!=='en')document.querySelector('meta[name="description"]').content=translate('Origami Design, c’est l’univers de Manege et Denzel dans Second Life. Des objets de décoration aux avatars, notre boutique rassemble des créations pour composer votre propre monde.',next);
  document.querySelectorAll('.review-signature time').forEach(node=>{node.textContent=new Intl.DateTimeFormat(next,{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(node.dateTime+'T12:00:00Z'));});
  document.dispatchEvent(new Event('origami:language'));
 }
-document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>{try{localStorage.setItem(languageKey,button.dataset.language);}catch{}setLanguage(button.dataset.language);}));
+document.querySelector('#language-select').addEventListener('change',event=>{const next=event.target.value;if(!supported.includes(next))return;try{localStorage.setItem(languageKey,next);}catch{}setLanguage(next);});
 setLanguage(language);

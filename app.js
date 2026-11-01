@@ -21,7 +21,7 @@ function render(){
   const title=document.createElement('h3');title.textContent=p.name.replace(/\s*~Origami Design~\s*/gi,'').replace(/^Box /,'');
   const action=document.createElement('span');action.className='product-action';action.textContent=t('Voir sur Marketplace ↗');card.append(picture,meta,title,action);return card;
  }));
- document.querySelector('#result-count').textContent=locale()==='en'?`${items.length} creation${items.length!==1?'s':''} to discover`:`${items.length} création${items.length>1?'s':''} à découvrir`;
+ document.querySelector('#result-count').textContent=window.origamiI18n.count(items.length);
  document.querySelector('#empty').hidden=items.length!==0;
 }
 document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;document.querySelector('#search').value='';document.querySelectorAll('[data-category]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});render();}));
