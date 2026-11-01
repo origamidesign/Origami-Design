@@ -18,3 +18,9 @@ body{background:var(--paper)}.announcement{background:#cfb27b;color:#191a17;font
 @media(max-width:700px){.header .brand-official{width:190px;height:62px}.header .brand-official img{width:190px;height:70px}.header{gap:12px}.crane{width:105%}}
 @media(max-width:360px){.header .brand-official{width:160px}.header .brand-official img{width:160px}}
 @media(prefers-reduced-motion:reduce){.crane-object,.crane-wing-back,.crane-wing-front{animation:none}}
+/* Logo officiel dans le studio et le pied de page */
+.studio-logo{font-size:0;line-height:0}
+.studio-logo img{display:block;width:100%;max-width:600px;height:auto;margin-inline:auto}
+footer .footer-logo{display:block;width:240px;max-width:100%}
+footer .footer-logo img{display:block;width:100%;height:auto;filter:none}
+@media(max-width:700px){.studio-logo img{max-width:380px}footer .footer-logo{width:200px}}
