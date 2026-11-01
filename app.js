@@ -11,7 +11,7 @@ function render(){
  if(sort==='name')items.sort((a,b)=>a.name.localeCompare(b.name,'fr'));
  grid.replaceChildren(...items.map(p=>{
   const card=document.createElement('a');card.className='product';card.href=p.url;card.target='_blank';card.rel='noopener noreferrer';
-  const picture=document.createElement('div');picture.className=p.category==='Arcade'?'product-picture arcade-picture':'product-picture';
+  const picture=document.createElement('div');picture.className='product-picture';
   const img=document.createElement('img');img.src=p.image;img.alt=p.name;img.loading='lazy';img.width=500;img.height=500;
   img.addEventListener('error',()=>{img.hidden=true;picture.classList.add('unavailable');picture.textContent='Visuel disponible sur Marketplace ↗';});
   const arrow=document.createElement('span');arrow.className='product-arrow';arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');picture.append(img,arrow);
