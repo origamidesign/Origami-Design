@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="gold"><stop stop-color="#d5aa51" stop-opacity="0"/><stop offset=".35" stop-color="#f3d591"/><stop offset=".65" stop-color="#aa8645"/><stop offset="1" stop-color="#d5aa51" stop-opacity="0"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#d2ab60" stop-opacity=".22"/><stop offset="1" stop-color="#d2ab60" stop-opacity="0"/></radialGradient>
+  </defs>
+  <style>
+    .ribbon{transform-origin:800px 500px;animation:sway 14s ease-in-out infinite alternate}.second{animation-delay:-7s;animation-direction:alternate-reverse}.facet{transform-box:fill-box;transform-origin:center;animation:float 12s ease-in-out infinite alternate}.other{animation-delay:-6s}.sparks{animation:glimmer 5s ease-in-out infinite alternate}.trails{stroke-dasharray:100 800;animation:travel 12s linear infinite}
+    @keyframes sway{from{transform:rotate(-7deg) translateY(-25px)}to{transform:rotate(7deg) translateY(25px)}}
+    @keyframes float{from{transform:translateY(-18px) rotate(-7deg)}to{transform:translateY(25px) rotate(9deg)}}
+    @keyframes glimmer{from{opacity:.35}to{opacity:1}}
+    @keyframes travel{to{stroke-dashoffset:-1800}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+  <ellipse cx="200" cy="300" rx="500" ry="450" fill="url(#halo)"/><ellipse cx="1450" cy="750" rx="500" ry="450" fill="url(#halo)"/>
+  <g class="ribbon" stroke="url(#gold)">
+    <path d="M-220 850C150 780 170 50 700 170S1250 1120 1840 320" stroke-width="2"/>
+    <path d="M-220 870C150 800 190 65 705 190S1250 1140 1840 340" stroke-opacity=".4"/>
+    <path class="trails" d="M-220 850C150 780 170 50 700 170S1250 1120 1840 320" stroke="#ffe4ab" stroke-width="3"/>
+  </g>
+  <g class="ribbon second" stroke="url(#gold)">
+    <path d="M-150 100C300 920 430 1070 940 740S1240-220 1790 100" stroke-width="1.5"/>
+    <path d="M-150 120C300 940 450 1080 955 760S1260-200 1790 120" stroke-opacity=".4"/>
+  </g>
+  <g class="facet" stroke="#e5c488" stroke-opacity=".5" fill="#c2a16a" fill-opacity=".05"><path d="m145 220 145 120-97 155-48-275 200 15-55 105-97 155 152-260Z"/><path d="m145 220 200 15-152 260Z"/></g>
+  <g class="facet other" stroke="#e5c488" stroke-opacity=".45" fill="#c2a16a" fill-opacity=".04"><path d="m1290 550 165-135 52 236-217-101 68 245 149-144-52-236-97 380Z"/></g>
+  <g class="sparks" fill="#f5d699"><circle cx="115" cy="610" r="2.5"/><circle cx="370" cy="130" r="2"/><circle cx="1410" cy="310" r="3"/><circle cx="1180" cy="850" r="2.5"/><circle cx="480" cy="850" r="2"/><circle cx="1530" cy="780" r="2"/><path d="m300 600 2 7 7 2-7 2-2 7-2-7-7-2 7-2Zm1030-420 2 8 8 2-8 2-2 8-2-8-8-2 8-2Z"/></g>
+</svg>

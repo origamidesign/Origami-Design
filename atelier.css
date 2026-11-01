@@ -50,3 +50,10 @@ body::after{background-image:linear-gradient(115deg,transparent 49.85%,#d1b77d0c
 @keyframes studio-light{from{opacity:.55}to{opacity:1}}
 @media(max-width:700px){body::after{display:none}body::before{animation-duration:36s}.hero .scene-grid{animation:none;will-change:auto}}
 @media(prefers-reduced-motion:reduce){body::before,body::after,.hero .scene-grid,.hero .scene-glow{animation:none;will-change:auto}}
+/* Rubans dorés et facettes : fond graphique visible dès l'accueil. */
+.visual-backdrop{position:fixed;inset:0;z-index:0;pointer-events:none;background:url('assets/ambient.svg') center/cover no-repeat;opacity:.65}
+body>header,body>main,body>footer,.announcement{position:relative;z-index:1}
+.hero-ribbons{position:absolute;inset:0;z-index:-1;pointer-events:none;background:url('assets/ambient.svg') center/cover no-repeat;opacity:.95;mask-image:linear-gradient(90deg,#000 15%,#0007 40%,#0007 60%,#000 85%)}
+.hero-copy{position:relative}.hero .intro{color:#c3c7b9}.hero h1{text-shadow:0 3px 24px #10130d}.hero .scene-grid{opacity:.7}
+.catalog-tools,.results-line{background:#151712f2}.product{background:#181a16f5}.faq-list{background:#101110d9;padding:0 20px}.closing{background-color:#101110d9}footer{background:#101110ed}
+@media(max-width:700px){.visual-backdrop{opacity:.4}.hero-ribbons{background-size:auto 100%;opacity:.8}.faq-list{padding-inline:12px}}
